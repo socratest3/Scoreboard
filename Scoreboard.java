@@ -1,41 +1,48 @@
-public class Main
+public class Scoreboard
 {
-    public static void main(String[] args)
+    private String teamOne;
+    private String teamTwo;
+    private int teamOneScore;
+    private int teamTwoScore;
+    private String activeTeam;
+
+public Scoreboard(String one, String two)
+{
+teamOne = one;
+teamTwo = two;
+activeTeam = teamOne;
+teamTwoScore = 0;
+teamOneScore = 0;    
+}
+
+public String getScore()
+{
+    return teamOneScore + "-" + teamTwoScore + "-" + activeTeam;
+}
+public void recordPlay(int score){
+    if (score == 0)
     {
-    String info;
-    Scoreboard game = new Scoreboard("Red", "Blue");
-    info = game.getScore();
-    System.out.println(info);
-    game.recordPlay(1);
-    info = game.getScore();
-    System.out.println(info);
-
-    game.recordPlay(0);
-    info = game.getScore();
-    System.out.println(info);
-
-    info = game.getScore();
-    System.out.println(info);
-    info = game.getScore();
-    game.recordPlay(3);
-    info = game.getScore();
-    game.recordPlay(1);
-    game.recordPlay(0);
-    System.out.println(info);
-
-    info = game.getScore();
-    game.recordPlay(0);
-    System.out.println(info);
-
-    game.recordPlay(4);
-    game.recordPlay(0);
-    info = game.getScore();
-    System.out.println(info);
-    
-    Scoreboard match = new Scoreboard("Yankees", "Mets");
-    info = match.getScore();
-    System.out.println(info);
-    info = game.getScore();
-    System.out.println(info);
+        if(activeTeam == teamOne )
+        {
+          activeTeam = teamTwo;
+        }
+        else
+        {
+            activeTeam = teamOne;
+        }
     }
+    else
+    {
+       if(activeTeam == teamOne)
+       {
+        teamOneScore += score;
+       }
+       else
+       {
+        teamTwoScore += score;
+       }
+
+    }
+    }
+
 }
